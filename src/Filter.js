@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import mainLogo from'./assets/profile.png';
+import mainLogo from'./assets/avatar.png';
 export default class filter extends Component {
         state = {
             users : [],
@@ -8,7 +8,7 @@ export default class filter extends Component {
     
 
     fetchUsers = () => {
-        fetch('https://jsonplaceholder.typicode.com/users'). then(response => response.json()) .then(data => data.map( item => this.setState({users : data}) , console.log(data))  )
+        fetch('https://jsonplaceholder.typicode.com/users'). then(response => response.json()) .then(data => data.map( item => this.setState({users : data}))  )
     
     };
 
@@ -18,12 +18,13 @@ export default class filter extends Component {
 
     render() {
         let filteredNames = this.state.users.filter((user) => {
-            return user.name.toLowerCase().indexOf(this.state.searchText) !== -1 
+            return user.name.toLowerCase().indexOf(this.state.searchText)   !== -1 || user.username.toLowerCase().indexOf(this.state.searchText) !==-1
         }) ; 
         return (
             <div>
                 <input placeholder="Search" onChange={ this.onChangeHandler}/>
-                <button onClick={this.fetchUsers} > Get Users</button>
+                {/* <button onClick={this.fetchUsers}  > Get Users</button> */}
+                <a href="#" class="button" onClick={this.fetchUsers} > Get Users </a>
                 {filteredNames.map(item => (<li key={item.id}>
                     <div className="profile-card-container">
                         <div className="profile-card-header">{ item.username}</div>
