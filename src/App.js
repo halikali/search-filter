@@ -1,11 +1,10 @@
-import logo from './logo.svg';
-import  './App.scss'
-import Filter from './Filter'
+import "./App.scss";
+import Filter from "./Filter";
 
 function App() {
   return (
     <div className="App">
-      <Filter/>
+      <Filter />
     </div>
   );
 }
